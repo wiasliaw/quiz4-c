@@ -10,6 +10,7 @@ BIN_DIR := bin
 # Compilation related flags and parameters
 CC := gcc
 CFLAGS := -Wall -I$(INC_DIR)
+IFLAGS := -lpthread -lm
 
 INCS_FILES = $(wildcard $(INC_DIR)/*.h)
 SRCS_FILES = $(wildcard $(SRC_DIR)/*.c)
@@ -22,7 +23,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 
 main:	$(OBJS_FILES)
 	@mkdir -p $(BIN_DIR)
-	gcc -o $(TARGET_FILES) $(OBJS_FILES)
+	gcc -o $(TARGET_FILES) $(OBJS_FILES) $(IFLAGS)
 
 clean:
 	-rm $(OBJ_DIR)/*.o $(TARGET_FILES)
